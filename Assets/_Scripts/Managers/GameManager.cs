@@ -120,6 +120,11 @@ public class GameManager : MonoBehaviour
         corpses.Remove(creature);
     }
 
+    public Creature GetNearestCorpose(Vector3 position)
+    {
+        return corpses.OrderBy(c => Vector3.Distance(c.transform.position, position)).FirstOrDefault();
+    }
+
     [Serializable]
     public class CreatureSpawn
     {

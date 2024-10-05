@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Follow: {fileID: 885532557}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 15
+    OrthographicSize: 28
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -189,7 +189,7 @@ Transform:
   m_GameObject: {fileID: 138243524}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: -0.4, z: -10.233858}
+  m_LocalPosition: {x: 6.1, y: 0.3, z: -10.233858}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -589,7 +589,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 28
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -614,7 +614,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: -0.4, z: -10.233858}
+  m_LocalPosition: {x: 6.1, y: 0.3, z: -10.233858}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -740,6 +740,9 @@ MonoBehaviour:
     count: 1
   - spawnPoint: {fileID: 1738365956}
     definition: {fileID: 11400000, guid: 567eb6c717e276b498cb910c0ade57e7, type: 2}
+    count: 1
+  - spawnPoint: {fileID: 1246909259}
+    definition: {fileID: 11400000, guid: af3378171ee12b349a0dfcb5f2a800d8, type: 2}
     count: 1
   wanderBoundsUpper: {fileID: 996566076}
   wanderBoundsLower: {fileID: 713030489}
@@ -989,6 +992,7 @@ Transform:
   - {fileID: 254236110}
   - {fileID: 2055034678}
   - {fileID: 1738365956}
+  - {fileID: 1246909259}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &665682731
@@ -1204,7 +1208,7 @@ Transform:
   m_GameObject: {fileID: 885532556}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: -0.4, z: -0.23385836}
+  m_LocalPosition: {x: 6.1, y: 0.3, z: -0.23385836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1253,7 +1257,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 25}
+  m_Size: {x: 90, y: 45}
   m_EdgeRadius: 0
 --- !u!50 &885532559
 Rigidbody2D:
@@ -1579,6 +1583,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3919a337d3c86e42b12001346bbd71c, type: 3}
+--- !u!1 &1246909258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1246909259}
+  m_Layer: 0
+  m_Name: Bristles
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1246909259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246909258}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.4, y: -26.1, z: -0.58597255}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 619620936}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1315441217
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,10 +13,16 @@ public class Worm : Creature
     const string ANIM_KILL= "Kill";
 
 
+    public SpringJoint2D attachedJoint;
+
+    
+
     public Animator anims;
     protected Vector2 wanderTarget = Vector2.zero;
     protected float lastWanderTime = 0;
     protected float wanderDelay = 0;
+    protected bool attachedToObject = false;
+
 
 
     protected virtual bool MoveTo(Vector3 position)
@@ -39,9 +45,9 @@ public class Worm : Creature
         base.UpdateAI();
         anims.SetFloat(ANIM_SPEED, 0f);
 
-        if (prey != null && prey.Dead)
+        if (prey != null && (!def.eatsCorpses && prey.Dead))
         {
-            OnPreyDead();
+            OnPreyLost();
 
         }
 
@@ -86,7 +92,7 @@ public class Worm : Creature
         }
     }
 
-    protected virtual void OnPreyDead()
+    protected virtual void OnPreyLost()
     {
         prey = null;
     }
@@ -132,6 +138,31 @@ public class Worm : Creature
         base.Kill(leaveCorpse);
 
         anims.SetTrigger(ANIM_KILL);
+    }
+
+    protected void DetachFromObject()
+    {
+        attachedJoint.enabled = false;
+        rb.freezeRotation = true;
+        attachedToObject = false;
+    }
+
+    protected void AttachToObject(GameObject target)
+    {
+        attachedToObject = true;
+
+        Collider2D targetCollider = target.GetComponent<Collider2D>();
+
+        if (targetCollider != null)
+        {
+            Vector2 nearestPoint = targetCollider.ClosestPoint(transform.position);
+            Vector2 localAttachPoint = transform.InverseTransformPoint(nearestPoint);
+            attachedJoint.anchor = localAttachPoint;
+        }
+
+        attachedJoint.enabled = true;
+        attachedJoint.connectedBody = target.GetComponent<Rigidbody2D>();
+        rb.freezeRotation = false;
     }
 
 

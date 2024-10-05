@@ -20,6 +20,7 @@ public abstract class Creature : MonoBehaviour
     protected bool dead = false;
     protected Creature prey;
     protected float deathTime = 0f;
+    protected float nutrientsCur = 0f;
 
     protected virtual bool LeavesCorpseOnDeath => true;
     protected float MaxLifespanSecs => def.maxLifespanSeconds - lifespanPenaltySecs;
@@ -39,6 +40,7 @@ public abstract class Creature : MonoBehaviour
     {
         SetNextReproductionTime();
         rb = GetComponent<Rigidbody2D>();
+        nutrientsCur = def.nutrition;
     }
 
     private void SetNextReproductionTime()
@@ -126,7 +128,7 @@ public abstract class Creature : MonoBehaviour
         
     }
 
-    protected Creature GetNearestPrey()
+    protected virtual Creature GetNearestPrey()
     {
         if (def.speciesToEat == null || def.speciesToEat.Count == 0) return null;
 
@@ -144,10 +146,25 @@ public abstract class Creature : MonoBehaviour
         if (creature == null) return false;
         if (creature.dead) return false;
 
-        foodLevel = creature.def.nutrition ;
+        foodLevel = Mathf.Clamp01(foodLevel + nutrientsCur) ;
         creature.Kill(leaveCorpse: false);
 
 
         return true;
+    }
+
+    public float AbsorbNutrients(float amount)
+    {
+        float amountActual = Mathf.Min(amount, nutrientsCur);
+
+        nutrientsCur -= amount;
+
+        if (nutrientsCur <= 0)
+        {
+            GameManager.Instance.RemoveCorpse(this);
+            Destroy(gameObject);
+        }
+
+        return amountActual;
     }
 }

@@ -7,25 +7,19 @@ public class Leech : Worm
 {
     [Header("Leech")]
     public float lifetimeDrainPerSec = 1.0f;
-    public SpringJoint2D attachedJoint;
-
-    private bool attachedToPrey = false;
-
 
 
     protected override void OnReachedPrey()
     {
         if (prey == null || prey.Dead) return;
-
-        attachedToPrey = true;
-        attachedJoint.enabled = true;
-        attachedJoint.connectedBody = prey.GetComponent<Rigidbody2D>();
-        rb.freezeRotation = false;
+        AttachToObject(prey.gameObject);
     }
+
+
 
     protected override void HuntPrey()
     {
-        if (attachedToPrey) return;
+        if (attachedToObject) return;
 
         base.HuntPrey();
     }
@@ -39,27 +33,27 @@ public class Leech : Worm
 
     private void UpdateSuck()
     {
-        if (!attachedToPrey) return;
+        if (!attachedToObject) return;
         if (prey == null || prey.Dead) return;
 
         prey.lifespanPenaltySecs += lifetimeDrainPerSec * Time.deltaTime;
         foodLevel = 1f;
     }
 
-    protected override void OnPreyDead()
+    protected override void OnPreyLost()
     {
-        base.OnPreyDead();
+        base.OnPreyLost();
 
-        if (attachedToPrey)
+        if (attachedToObject)
         {
-            DetachFromPrey();
+            DetachFromObject();
         }
     }
 
-    private void DetachFromPrey()
+    public override void Kill(bool leaveCorpse)
     {
-        attachedJoint.enabled = false;
-        rb.freezeRotation = true;
-        attachedToPrey = false;
+
+        DetachFromObject();
+        base.Kill(leaveCorpse);
     }
 }

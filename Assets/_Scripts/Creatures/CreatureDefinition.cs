@@ -28,6 +28,7 @@ public class CreatureDefinition : ScriptableObject
     public float searchFoodThreshold = 0.5f;
     public List<CreatureDefinition> speciesToEat;
     public float nutrition = 1f;
+    public bool eatsCorpses = false;
 
     [Header("Reproduction")]
     public float reproductionIntervalNorm = 0.4f;
