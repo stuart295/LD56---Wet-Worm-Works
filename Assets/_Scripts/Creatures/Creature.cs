@@ -18,6 +18,7 @@ public abstract class Creature : MonoBehaviour
     protected Rigidbody2D rb;
     protected bool dead = false;
     protected Creature prey;
+    protected float deathTime = 0f;
 
     protected virtual bool LeavesCorpseOnDeath => true;
 
@@ -43,9 +44,22 @@ public abstract class Creature : MonoBehaviour
 
     public virtual void Update()
     {
-        if (dead) return;//TODO update decay
+        if (dead)
+        {
+            UpdateDecay();
+            return;
+        }
         UpdateFoodLevels();
         UpdateLifespan();
+    }
+
+    protected virtual void UpdateDecay()
+    {
+        if (Time.time - deathTime >= GameManager.Instance.corpseDecayTimeSecs)
+        {
+            GameManager.Instance.RemoveCorpse(this);
+            Destroy(gameObject);//TODO effects?
+        }
     }
 
     private void FixedUpdate()
@@ -87,7 +101,10 @@ public abstract class Creature : MonoBehaviour
 
     public virtual void Kill(bool leaveCorpse)
     {
+        if (dead) return;
+
         dead = true;
+        deathTime = Time.time;
 
         if (leaveCorpse)
         {

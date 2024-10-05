@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
 
+    [Header("Settings")]
+    public float corpseDecayTimeSecs = 30f;
+
     [Header("Creatures")]
     public CreatureDefinition algaeDef;
 
@@ -110,5 +113,12 @@ public class GameManager : MonoBehaviour
         float clampedX = Mathf.Clamp(position.x, bounds.min.x, bounds.max.x);
         float clampedY = Mathf.Clamp(position.y, bounds.min.y, bounds.max.y);
         return new Vector2(clampedX, clampedY);
+    }
+
+    public void RemoveCorpse(Creature creature)
+    {
+        if (!corpses.Contains(creature)) return;
+
+        corpses.Remove(creature);
     }
 }

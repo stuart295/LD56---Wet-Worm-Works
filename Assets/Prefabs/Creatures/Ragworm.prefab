@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6706466954911732088}
   - component: {fileID: 5577725935374051463}
   - component: {fileID: 6480962379055706506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ragworm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

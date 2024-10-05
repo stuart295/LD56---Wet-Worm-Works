@@ -20,7 +20,7 @@ MonoBehaviour:
   wanderDelayMin: 3
   wanderDelayMax: 6
   prefab: {fileID: 5313118508782271607, guid: c74146ff39ddbd94aaac439261888076, type: 3}
-  maxCreatures: 20
+  maxCreatures: 50
   hungerRate: 0.05
   searchFoodThreshold: 0.5
   speciesToEat:
