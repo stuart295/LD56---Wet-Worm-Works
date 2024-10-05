@@ -10,29 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53b66ac7ae1f65e498c266591dd86b21, type: 3}
-  m_Name: Leech
+  m_Name: NutrientPellet
   m_EditorClassIdentifier: 
-  creatureName: Leech
+  creatureName: Nutrients
   description: TODO
-  moveSpeed: 20
-  turnSpeed: 200
-  wanderDist: 30
+  moveSpeed: 3
+  turnSpeed: 10
+  wanderDist: 10
   wanderDelayMin: 3
   wanderDelayMax: 6
   livesAtSurface: 1
-  fixVelocity: 1
-  prefab: {fileID: 5313118508782271607, guid: b3919a337d3c86e42b12001346bbd71c, type: 3}
-  maxCreatures: 50
-  nutrientLossRate: 0.05
-  searchFoodThreshold: 0.8
-  speciesToEat:
-  - {fileID: 11400000, guid: 18381ec5c517a894babf401bad83cc7a, type: 2}
+  fixVelocity: 0
+  prefab: {fileID: 534986181200833154, guid: 07645be98bd2aeb439cba1f06bfd0af9, type: 3}
+  maxCreatures: 30
+  nutrientLossRate: 0.025
+  searchFoodThreshold: 0.5
+  speciesToEat: []
   startNutrients: 0.5
   maxNutrients: 1
   nutrientDeathMultiplier: 1
   eatsCorpses: 0
-  reproductionIntervalNorm: 0.8
+  reproductionIntervalNorm: 2
   reproductionIntervalNoise: 0.05
-  offspringCount: 1
-  offspringSpawnOffsetDist: 2
-  maxLifespanSeconds: 30
+  offspringCount: 0
+  offspringSpawnOffsetDist: 1
+  maxLifespanSeconds: 60

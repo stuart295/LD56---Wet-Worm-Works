@@ -7,7 +7,7 @@ public class Algae : Creature
 
     protected override bool LeavesCorpseOnDeath => false;
 
-    protected override void UpdateFoodLevels()
+    protected override void UpdateNutrientLevels()
     {
         //Food never decreases 
     }

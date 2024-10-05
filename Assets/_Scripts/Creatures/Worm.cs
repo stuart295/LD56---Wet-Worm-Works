@@ -9,13 +9,11 @@ using Random = UnityEngine.Random;
 public class Worm : Creature
 {
 
-    const string ANIM_SPEED = "Speed";
-    const string ANIM_KILL= "Kill";
+    protected const string ANIM_SPEED = "Speed";
+    protected const string ANIM_KILL= "Kill";
 
 
     public SpringJoint2D attachedJoint;
-
-    
 
     public Animator anims;
     protected Vector2 wanderTarget = Vector2.zero;
@@ -51,7 +49,7 @@ public class Worm : Creature
 
         }
 
-        if (prey == null && foodLevel <= def.searchFoodThreshold)
+        if (prey == null && Nutrients <= def.searchFoodThreshold)
         {
             //Getting hungry, search for food
             prey = GetNearestPrey();
@@ -133,11 +131,13 @@ public class Worm : Creature
         rb.rotation = Mathf.MoveTowards(rb.rotation, angle, Time.deltaTime * def.turnSpeed);
     }
 
-    public override void Kill(bool leaveCorpse)
+    public override float Kill(bool leaveCorpse)
     {
-        base.Kill(leaveCorpse);
+        float nutrients = base.Kill(leaveCorpse);
 
         anims.SetTrigger(ANIM_KILL);
+
+        return nutrients;
     }
 
     protected void DetachFromObject()
@@ -151,19 +151,26 @@ public class Worm : Creature
     {
         attachedToObject = true;
 
+        // Get the collider of the target object
         Collider2D targetCollider = target.GetComponent<Collider2D>();
 
         if (targetCollider != null)
         {
-            Vector2 nearestPoint = targetCollider.ClosestPoint(transform.position);
-            Vector2 localAttachPoint = transform.InverseTransformPoint(nearestPoint);
-            attachedJoint.anchor = localAttachPoint;
+            // Find the closest point on the target's surface to the leech's position
+            Vector2 leechPosition = transform.position;
+            Vector2 nearestPoint = targetCollider.ClosestPoint(leechPosition);
+
+            attachedJoint.connectedAnchor = target.transform.InverseTransformPoint(nearestPoint);
+
+            // Debugging to ensure the point is correct
+            Debug.DrawLine(leechPosition, nearestPoint, Color.red, 2f);
         }
 
         attachedJoint.enabled = true;
         attachedJoint.connectedBody = target.GetComponent<Rigidbody2D>();
         rb.freezeRotation = false;
     }
+
 
 
 #if UNITY_EDITOR

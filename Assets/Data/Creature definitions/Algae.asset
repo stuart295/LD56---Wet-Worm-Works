@@ -23,10 +23,12 @@ MonoBehaviour:
   fixVelocity: 0
   prefab: {fileID: 534986181200833154, guid: 7d3f38b0634b6b245a0b61862ddf63cf, type: 3}
   maxCreatures: 60
-  hungerRate: 0.1
-  searchFoodThreshold: 0.5
+  nutrientLossRate: 0
+  searchFoodThresholdPercent: 0.5
   speciesToEat: []
-  nutrition: 1
+  startNutrients: 0.5
+  maxNutrients: 1
+  nutrientDeathMultiplier: 1
   eatsCorpses: 0
   reproductionIntervalNorm: 0.4
   reproductionIntervalNoise: 0.05

@@ -39,7 +39,7 @@ public class Leech : Worm
         if (prey == null || prey.Dead) return;
 
         prey.lifespanPenaltySecs += lifetimeDrainPerSec * Time.deltaTime;
-        foodLevel = 1f;
+        Nutrients = def.maxNutrients;
     }
 
     protected override void OnPreyLost()
@@ -52,10 +52,9 @@ public class Leech : Worm
         }
     }
 
-    public override void Kill(bool leaveCorpse)
+    public override float Kill(bool leaveCorpse)
     {
-
         DetachFromObject();
-        base.Kill(leaveCorpse);
+        return base.Kill(leaveCorpse);
     }
 }

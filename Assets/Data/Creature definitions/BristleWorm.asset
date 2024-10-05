@@ -20,19 +20,23 @@ MonoBehaviour:
   wanderDelayMin: 3
   wanderDelayMax: 6
   livesAtSurface: 0
+  fixVelocity: 1
   prefab: {fileID: 5313118508782271607, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
   maxCreatures: 50
-  hungerRate: 0.025
-  searchFoodThreshold: 0.8
+  nutrientLossRate: 0.025
+  searchFoodThreshold: 100
   speciesToEat:
   - {fileID: 11400000}
   - {fileID: 11400000, guid: 18381ec5c517a894babf401bad83cc7a, type: 2}
   - {fileID: 11400000, guid: 567eb6c717e276b498cb910c0ade57e7, type: 2}
   - {fileID: 11400000, guid: 5463a901e56b1144eb5331ca6ef0a133, type: 2}
-  nutrition: 1
+  - {fileID: 11400000, guid: 61cd850ac17f7c846bcbe31a8bee364d, type: 2}
+  startNutrients: 1
+  maxNutrients: 100
+  nutrientDeathMultiplier: 1
   eatsCorpses: 1
-  reproductionIntervalNorm: 0.4
+  reproductionIntervalNorm: 0.7
   reproductionIntervalNoise: 0.05
   offspringCount: 1
   offspringSpawnOffsetDist: 2
-  maxLifespanSeconds: 180
+  maxLifespanSeconds: 210

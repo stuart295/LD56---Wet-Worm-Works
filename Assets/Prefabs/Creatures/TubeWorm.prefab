@@ -136,12 +136,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5209661472213733004}
-  - component: {fileID: 3474935269936741555}
+  - component: {fileID: 7565670521255222292}
   - component: {fileID: 5577725935374051463}
   - component: {fileID: 6480962379055706506}
   - component: {fileID: 5959763667145772722}
-  m_Layer: 11
-  m_Name: BristleWorm
+  m_Layer: 12
+  m_Name: TubeWorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +163,7 @@ Transform:
   - {fileID: 6463068384192206636}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3474935269936741555
+--- !u!114 &7565670521255222292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,21 +172,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5313118508782271607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57597401ebc2834faac7aec8c7a93e1, type: 3}
+  m_Script: {fileID: 11500000, guid: b7610c7ff709b9b45b6a1947321bac1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  def: {fileID: 11400000, guid: af3378171ee12b349a0dfcb5f2a800d8, type: 2}
-  nutrientLevel: 0.5
+  def: {fileID: 11400000, guid: 61cd850ac17f7c846bcbe31a8bee364d, type: 2}
+  foodLevel: 0.5
   lifespanCur: 0
   lifespanPenaltySecs: 0
-  corpseNutrients: 0
   attachedJoint: {fileID: 5959763667145772722}
   anims: {fileID: 2089883020971362803}
-  nutrientAbsorbRate: 2
-  nutrientsPrefab: {fileID: 11400000, guid: dfc12de34d7289b49964f869d5bdd4e2, type: 2}
-  nutrientCount: 1
-  nutrientPoopThreshold: 60
-  nutrientPoopUse: 50
+  crystalPrefab: {fileID: 0}
+  crystalCount: 1
 --- !u!50 &5577725935374051463
 Rigidbody2D:
   serializedVersion: 4
@@ -309,7 +305,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0.0000004768371}
   m_LocalPosition: {x: 0, y: -0.0000019073486, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2512233786797053468}
@@ -357,7 +353,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8d92b3e9e59e4b64cba56f9096c881b5, type: 3}
-  m_Color: {r: 0.94275093, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5861825, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

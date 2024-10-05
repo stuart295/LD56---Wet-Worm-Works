@@ -10,9 +10,10 @@ public abstract class Creature : MonoBehaviour
     public CreatureDefinition def;
 
     [Header("Live stats")]
-    public float foodLevel = 0.5f;
+    public float nutrientLevel = 0.5f;
     public float lifespanCur = 0f;
     public float lifespanPenaltySecs = 0f;
+    public float corpseNutrients = 0f;
 
 
     private float nextReproductionTime = 0f;
@@ -20,14 +21,18 @@ public abstract class Creature : MonoBehaviour
     protected bool dead = false;
     protected Creature prey;
     protected float deathTime = 0f;
-    protected float nutrientsCur = 0f;
 
     protected virtual bool LeavesCorpseOnDeath => true;
     protected float MaxLifespanSecs => def.maxLifespanSeconds - lifespanPenaltySecs;
     protected virtual bool FixVelocity => def.fixVelocity && !Dead;
 
+    public virtual float Nutrients
+    {
+        get => nutrientLevel;
+        set => nutrientLevel = Mathf.Clamp(value, 0, def.maxNutrients);
+    }
+
     public bool Dead { get => dead; }
-    public float NutrientsCur { get => nutrientsCur;  }
 
     public virtual void Reproduce()
     {
@@ -42,7 +47,7 @@ public abstract class Creature : MonoBehaviour
     {
         SetNextReproductionTime();
         rb = GetComponent<Rigidbody2D>();
-        nutrientsCur = def.nutrition;
+        Nutrients = def.startNutrients;
     }
 
     private void SetNextReproductionTime()
@@ -57,7 +62,7 @@ public abstract class Creature : MonoBehaviour
             UpdateDecay();
             return;
         }
-        UpdateFoodLevels();
+        UpdateNutrientLevels();
         UpdateLifespan();
     }
 
@@ -98,21 +103,23 @@ public abstract class Creature : MonoBehaviour
     }
 
 
-    protected virtual void UpdateFoodLevels()
+    protected virtual void UpdateNutrientLevels()
     {
-        foodLevel  = Mathf.Clamp01(foodLevel -= def.hungerRate*Time.deltaTime);
-        if (foodLevel <= 0)
+        Nutrients -= def.nutrientLossRate * Time.deltaTime;
+        if (Nutrients <= 0)
         {
             Kill(leaveCorpse: LeavesCorpseOnDeath);
         }
     }
 
-    public virtual void Kill(bool leaveCorpse)
+    public virtual float Kill(bool leaveCorpse)
     {
-        if (dead) return;
+        if (dead) return 0;
 
         dead = true;
         deathTime = Time.time;
+
+        corpseNutrients = Nutrients * def.nutrientDeathMultiplier;
 
         if (leaveCorpse)
         {
@@ -120,6 +127,7 @@ public abstract class Creature : MonoBehaviour
             rb.freezeRotation = false;
             rb.drag = 3f;
             rb.angularDrag = 0.5f;
+            
         }
         else
         {
@@ -127,7 +135,7 @@ public abstract class Creature : MonoBehaviour
         }
 
         GameManager.Instance.OnCreatureDeath(this, leaveCorpse);
-        
+        return corpseNutrients;
     }
 
     protected virtual Creature GetNearestPrey()
@@ -148,20 +156,18 @@ public abstract class Creature : MonoBehaviour
         if (creature == null) return false;
         if (creature.dead) return false;
 
-        foodLevel = Mathf.Clamp01(foodLevel + nutrientsCur) ;
-        creature.Kill(leaveCorpse: false);
-
-
+        Nutrients += creature.Kill(leaveCorpse: false);
+        
         return true;
     }
 
     public float AbsorbNutrients(float amount)
     {
-        float amountActual = Mathf.Min(amount, nutrientsCur);
+        float amountActual = Mathf.Min(amount, corpseNutrients);
 
-        nutrientsCur -= amount;
+        corpseNutrients -= amount;
 
-        if (nutrientsCur <= 0)
+        if (corpseNutrients <= 0)
         {
             GameManager.Instance.RemoveCorpse(this);
             Destroy(gameObject);

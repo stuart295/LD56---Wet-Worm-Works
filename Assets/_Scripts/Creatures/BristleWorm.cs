@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class BristleWorm : Worm
@@ -9,7 +10,8 @@ public class BristleWorm : Worm
 
     public CreatureDefinition nutrientsPrefab;
     public int nutrientCount = 1;
-
+    public float nutrientPoopThreshold = 60f;
+    public float nutrientPoopUse = 50f;
 
     protected override Creature GetNearestPrey()
     {
@@ -30,11 +32,10 @@ public class BristleWorm : Worm
         AttachToObject(prey.gameObject);
     }
 
-    public override void Kill(bool leaveCorpse)
+    public override float Kill(bool leaveCorpse)
     {
-
         DetachFromObject();
-        base.Kill(leaveCorpse);
+        return base.Kill(leaveCorpse);
     }
 
     public override void Update()
@@ -56,11 +57,16 @@ public class BristleWorm : Worm
         Vector2 preyPos = prey.transform.position;
 
         float nutrGained = prey.AbsorbNutrients(nutrientAbsorbRate*Time.deltaTime);
-        foodLevel = Mathf.Clamp01(foodLevel + nutrGained);
+        Nutrients += nutrGained;
 
-        if (prey == null || prey.NutrientsCur <= 0)
+        if (Nutrients >= nutrientPoopThreshold)
         {
-            GameManager.Instance.SpawnCreature(nutrientsPrefab, preyPos, nutrientCount);
+            Nutrients -= nutrientPoopUse;
+            GameManager.Instance.SpawnCreature(nutrientsPrefab, transform.position, nutrientCount);
+        }
+
+        if (prey == null || prey.corpseNutrients <= 0)
+        {
             OnPreyLost();
         }
     }

@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2211606259235868000}
-  - component: {fileID: 4215058117064948529}
+  - component: {fileID: 8290523919062637618}
   - component: {fileID: 8669203474353902340}
   - component: {fileID: 3164284621073722278}
   - component: {fileID: 472671108572764792}
   m_Layer: 0
-  m_Name: Nutrient
+  m_Name: NutrientPellet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4215058117064948529
+--- !u!114 &8290523919062637618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,13 +44,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 534986181200833154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0152c540187abf3488208e8cbd8bdb06, type: 3}
+  m_Script: {fileID: 11500000, guid: f59a09d93a5bfa447807e261b590554f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   def: {fileID: 11400000, guid: dfc12de34d7289b49964f869d5bdd4e2, type: 2}
-  foodLevel: 1
+  nutrientLevel: 50
   lifespanCur: 0
   lifespanPenaltySecs: 0
+  corpseNutrients: 0
 --- !u!212 &8669203474353902340
 SpriteRenderer:
   m_ObjectHideFlags: 0

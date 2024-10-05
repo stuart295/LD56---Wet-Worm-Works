@@ -24,11 +24,13 @@ public class CreatureDefinition : ScriptableObject
     public GameObject prefab;
     public int maxCreatures = 50;
 
-    [Header("Hunger")]
-    public float hungerRate = 0.1f;
+    [Header("Nutrition")]
+    public float nutrientLossRate = 0.1f;
     public float searchFoodThreshold = 0.5f;
     public List<CreatureDefinition> speciesToEat;
-    public float nutrition = 1f;
+    public float startNutrients = 0.5f;
+    public float maxNutrients = 1f;
+    public float nutrientDeathMultiplier = 1f;
     public bool eatsCorpses = false;
 
     [Header("Reproduction")]

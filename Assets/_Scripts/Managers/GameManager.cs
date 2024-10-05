@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public Collider2D wanderBoundsUpper;
     public Collider2D wanderBoundsLower;
 
+    [Header("Vents")]
+    public List<SulphurVent> sulphurVents;
+
     public static GameManager Instance { get => instance; }
 
     private Dictionary<CreatureDefinition, int> creatureCounts = new Dictionary<CreatureDefinition, int>();
@@ -123,6 +126,11 @@ public class GameManager : MonoBehaviour
     public Creature GetNearestCorpose(Vector3 position)
     {
         return corpses.OrderBy(c => Vector3.Distance(c.transform.position, position)).FirstOrDefault();
+    }
+
+    public SulphurVent GetRandomVent()
+    {
+        return sulphurVents.OrderBy(v => Random.value).FirstOrDefault();    
     }
 
     [Serializable]
