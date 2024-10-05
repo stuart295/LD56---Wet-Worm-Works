@@ -19,15 +19,15 @@ MonoBehaviour:
   wanderDist: 10
   wanderDelayMin: 3
   wanderDelayMax: 6
-  livesAtSurface: 1
+  livesAtSurface: 0
   fixVelocity: 0
   prefab: {fileID: 534986181200833154, guid: 07645be98bd2aeb439cba1f06bfd0af9, type: 3}
   maxCreatures: 30
   nutrientLossRate: 0.025
   searchFoodThreshold: 0.5
   speciesToEat: []
-  startNutrients: 0.5
-  maxNutrients: 1
+  startNutrients: 50
+  maxNutrients: 50
   nutrientDeathMultiplier: 1
   eatsCorpses: 0
   reproductionIntervalNorm: 2

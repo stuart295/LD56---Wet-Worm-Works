@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class TubeWorm : Worm
 {
     [Header("Tube Worm")]
 
-    public CreatureDefinition crystalPrefab;
+    public CreatureDefinition crystalDef;
     public int crystalCount = 1;
+    public float nutrientPickupRange = 10f;
+    public Transform poopPoint;
 
     private SulphurVent targetVent;
 
@@ -45,22 +48,17 @@ public class TubeWorm : Worm
     private void UpdateEat()
     {
         if (!attachedToObject || Dead) return;
-        //if (prey == null)
-        //{
-        //    OnPreyLost();
-        //    return;
-        //}
+        if (Nutrients >= def.searchFoodThreshold) return;
 
-        //Vector2 preyPos = prey.transform.position;
+        Creature nearestFood = GetNearestPrey();
+        if (nearestFood == null) return;
 
-        //float nutrGained = prey.AbsorbNutrients(nutrientAbsorbRate*Time.deltaTime);
-        //foodLevel = Mathf.Clamp01(foodLevel + nutrGained);
+        if (Vector2.Distance(transform.position, nearestFood.transform.position) > nutrientPickupRange) return;
 
-        //if (prey == null || prey.NutrientsCur <= 0)
-        //{
-        //    GameManager.Instance.SpawnCreature(nutrientsPrefab, preyPos, nutrientCount);
-        //    OnPreyLost();
-        //}
+        float nutrGained = nearestFood.Kill(leaveCorpse: false);
+        Nutrients += nutrGained;
+
+        GameManager.Instance.SpawnCreature(crystalDef, poopPoint.position, crystalCount);
     }
 
 
@@ -73,10 +71,19 @@ public class TubeWorm : Worm
             SulphurVent vent = collision.gameObject.GetComponent<SulphurVent>();
             if (vent == null) return;
 
-            AttachToObject(vent.gameObject);
+            AttachToObject(vent.gameObject, collide: true);
 
         }
     }
 
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        if (!Selection.Contains(gameObject)) return;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, nutrientPickupRange);
+    }
+#endif
 
 }

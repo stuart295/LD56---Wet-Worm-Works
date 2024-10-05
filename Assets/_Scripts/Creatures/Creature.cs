@@ -75,7 +75,7 @@ public abstract class Creature : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (dead) return;
 

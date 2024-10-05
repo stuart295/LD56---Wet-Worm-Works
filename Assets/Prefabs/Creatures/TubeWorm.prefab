@@ -161,6 +161,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6463068384192206636}
+  - {fileID: 4520831486004349551}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7565670521255222292
@@ -176,13 +177,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   def: {fileID: 11400000, guid: 61cd850ac17f7c846bcbe31a8bee364d, type: 2}
-  foodLevel: 0.5
+  nutrientLevel: 0.5
   lifespanCur: 0
   lifespanPenaltySecs: 0
+  corpseNutrients: 0
   attachedJoint: {fileID: 5959763667145772722}
   anims: {fileID: 2089883020971362803}
-  crystalPrefab: {fileID: 0}
+  crystalDef: {fileID: 11400000, guid: a8a0e2ce13d460e429c801b0197deba9, type: 2}
   crystalCount: 1
+  nutrientPickupRange: 10
+  poopPoint: {fileID: 4520831486004349551}
 --- !u!50 &5577725935374051463
 Rigidbody2D:
   serializedVersion: 4
@@ -407,3 +411,34 @@ MonoBehaviour:
     m_Extent: {x: 2.22, y: 0.27999043, z: 0.000000029802322}
   m_AlwaysUpdate: 0
   m_AutoRebind: 0
+--- !u!1 &7937990683224924630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4520831486004349551}
+  m_Layer: 12
+  m_Name: PoopPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4520831486004349551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937990683224924630}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.52, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5209661472213733004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

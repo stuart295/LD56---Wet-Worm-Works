@@ -147,7 +147,7 @@ public class Worm : Creature
         attachedToObject = false;
     }
 
-    protected void AttachToObject(GameObject target)
+    protected void AttachToObject(GameObject target, bool collide=false)
     {
         attachedToObject = true;
 
@@ -167,6 +167,7 @@ public class Worm : Creature
         }
 
         attachedJoint.enabled = true;
+        attachedJoint.enableCollision = collide;
         attachedJoint.connectedBody = target.GetComponent<Rigidbody2D>();
         rb.freezeRotation = false;
     }
