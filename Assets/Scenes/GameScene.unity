@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 285807466}
   - component: {fileID: 285807467}
   - component: {fileID: 285807468}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EdgeCollider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,6 +674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 527733383}
   - component: {fileID: 527733384}
+  - component: {fileID: 527733385}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -748,6 +749,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &527733385
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527733382}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +919,7 @@ GameObject:
   - component: {fileID: 665682732}
   - component: {fileID: 665682733}
   - component: {fileID: 665682734}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EdgeCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -978,7 +1024,7 @@ GameObject:
   - component: {fileID: 885532557}
   - component: {fileID: 885532558}
   - component: {fileID: 885532559}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CameraTarget
   m_TagString: Untagged
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
@@ -1133,7 +1179,7 @@ GameObject:
   - component: {fileID: 991953429}
   - component: {fileID: 991953430}
   - component: {fileID: 991953431}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EdgeCollider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1149,7 +1195,7 @@ Transform:
   m_GameObject: {fileID: 991953428}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.70710576, w: 0.70710784}
-  m_LocalPosition: {x: -2.4000015, y: -32.33, z: 0}
+  m_LocalPosition: {x: -2.4, y: -32.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1238,7 +1284,7 @@ GameObject:
   - component: {fileID: 1315441218}
   - component: {fileID: 1315441219}
   - component: {fileID: 1315441220}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EdgeCollider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1612,34 +1658,6 @@ PrefabInstance:
     - target: {fileID: 5313118508782271607, guid: c74146ff39ddbd94aaac439261888076, type: 3}
       propertyPath: m_Name
       value: Flatworm
-      objectReference: {fileID: 0}
-    - target: {fileID: 5577725935374051463, guid: c74146ff39ddbd94aaac439261888076, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6463068384192206636, guid: c74146ff39ddbd94aaac439261888076, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6463068384192206636, guid: c74146ff39ddbd94aaac439261888076, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.0000019073486
-      objectReference: {fileID: 0}
-    - target: {fileID: 6463068384192206636, guid: c74146ff39ddbd94aaac439261888076, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.0000004768371
-      objectReference: {fileID: 0}
-    - target: {fileID: 6463068384192206636, guid: c74146ff39ddbd94aaac439261888076, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6463068384192206636, guid: c74146ff39ddbd94aaac439261888076, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -180
-      objectReference: {fileID: 0}
-    - target: {fileID: 6480962379055706506, guid: c74146ff39ddbd94aaac439261888076, type: 3}
-      propertyPath: m_Offset.x
-      value: -2.22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

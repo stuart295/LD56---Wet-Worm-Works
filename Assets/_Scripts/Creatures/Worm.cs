@@ -9,6 +9,7 @@ public class Worm : Creature
 {
 
     const string ANIM_SPEED = "Speed";
+    const string ANIM_KILL= "Kill";
 
 
     public Animator anims;
@@ -104,4 +105,10 @@ public class Worm : Creature
         rb.rotation = Mathf.MoveTowards(rb.rotation, angle, Time.deltaTime * def.turnSpeed);
     }
 
+    public override void Kill(bool leaveCorpse)
+    {
+        base.Kill(leaveCorpse);
+
+        anims.SetTrigger(ANIM_KILL);
+    }
 }

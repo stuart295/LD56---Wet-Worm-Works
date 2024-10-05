@@ -19,6 +19,8 @@ public abstract class Creature : MonoBehaviour
     protected bool dead = false;
     protected Creature prey;
 
+    protected virtual bool LeavesCorpseOnDeath => true;
+
     public virtual void Reproduce()
     {
         float offsetRange = def.offspringSpawnOffsetDist;
@@ -41,12 +43,16 @@ public abstract class Creature : MonoBehaviour
 
     public virtual void Update()
     {
+        if (dead) return;//TODO update decay
         UpdateFoodLevels();
         UpdateLifespan();
     }
 
     private void FixedUpdate()
     {
+        
+
+        if (dead) return;
         rb.velocity = Vector2.zero;
         UpdateAI();
     }
@@ -61,7 +67,7 @@ public abstract class Creature : MonoBehaviour
         lifespanCur += Time.deltaTime;
         if (lifespanCur >= def.maxLifespanSeconds)
         {
-            Kill(leaveCorpse: true);
+            Kill(leaveCorpse: LeavesCorpseOnDeath);
         }else if (lifespanCur >= nextReproductionTime)
         {
             Reproduce();
@@ -75,17 +81,20 @@ public abstract class Creature : MonoBehaviour
         foodLevel  = Mathf.Clamp01(foodLevel -= def.hungerRate*Time.deltaTime);
         if (foodLevel <= 0)
         {
-            Kill(leaveCorpse: true);
+            Kill(leaveCorpse: LeavesCorpseOnDeath);
         }
     }
 
-    public void Kill(bool leaveCorpse)
+    public virtual void Kill(bool leaveCorpse)
     {
         dead = true;
 
         if (leaveCorpse)
         {
-            //TODO
+            rb.gravityScale = 1f;
+            rb.freezeRotation = false;
+            rb.drag = 3f;
+            rb.angularDrag = 0.5f;
         }
         else
         {

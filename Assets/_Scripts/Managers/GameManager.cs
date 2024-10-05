@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,8 +13,9 @@ public class GameManager : MonoBehaviour
     public CreatureDefinition algaeDef;
 
 
-    [Header("Spawn points")]
+    [Header("Spawns")]
     public List<Transform> algaeSpawns;
+    public int algaeStartCount = 10;
 
     public Collider2D bounds;
 
@@ -44,7 +46,12 @@ public class GameManager : MonoBehaviour
     {
         foreach (Transform spawnPoint in algaeSpawns)
         {
-            SpawnCreature(algaeDef, spawnPoint.position, 1);
+            for (int i = 0; i < algaeStartCount; i++)
+            {
+                Vector3 offset = new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
+                SpawnCreature(algaeDef, spawnPoint.position + offset, 1);
+            }
+            
         }
     }
 
