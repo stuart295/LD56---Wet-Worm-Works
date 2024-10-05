@@ -179,9 +179,9 @@ MonoBehaviour:
   foodLevel: 1
   lifespanCur: 0
   lifespanPenaltySecs: 0
+  attachedJoint: {fileID: 5959763667145772722}
   anims: {fileID: 2089883020971362803}
   lifetimeDrainPerSec: 1
-  attachedJoint: {fileID: 5959763667145772722}
 --- !u!50 &5577725935374051463
 Rigidbody2D:
   serializedVersion: 4
@@ -195,8 +195,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 5
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 3
+  m_AngularDrag: 3
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:

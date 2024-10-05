@@ -18,6 +18,7 @@ public class CreatureDefinition : ScriptableObject
     public float wanderDelayMin = 3f;
     public float wanderDelayMax = 6f;
     public bool livesAtSurface = true;
+    public bool fixVelocity = true;
 
     [Header("Spawning")]
     public GameObject prefab;

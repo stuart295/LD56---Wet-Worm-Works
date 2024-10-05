@@ -23,7 +23,7 @@ public class Worm : Creature
     protected float wanderDelay = 0;
     protected bool attachedToObject = false;
 
-
+    protected override bool FixVelocity => base.FixVelocity && !attachedToObject;
 
     protected virtual bool MoveTo(Vector3 position)
     {

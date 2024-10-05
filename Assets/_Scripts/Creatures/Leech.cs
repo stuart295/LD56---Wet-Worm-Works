@@ -11,6 +11,7 @@ public class Leech : Worm
 
     protected override void OnReachedPrey()
     {
+        if (Dead) return;
         if (prey == null || prey.Dead) return;
         AttachToObject(prey.gameObject);
     }
@@ -33,6 +34,7 @@ public class Leech : Worm
 
     private void UpdateSuck()
     {
+        if (dead) return;
         if (!attachedToObject) return;
         if (prey == null || prey.Dead) return;
 

@@ -182,6 +182,8 @@ MonoBehaviour:
   attachedJoint: {fileID: 5959763667145772722}
   anims: {fileID: 2089883020971362803}
   nutrientAbsorbRate: 0.1
+  nutrientsPrefab: {fileID: 11400000, guid: dfc12de34d7289b49964f869d5bdd4e2, type: 2}
+  nutrientCount: 1
 --- !u!50 &5577725935374051463
 Rigidbody2D:
   serializedVersion: 4

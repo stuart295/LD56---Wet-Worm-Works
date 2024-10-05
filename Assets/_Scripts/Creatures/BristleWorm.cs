@@ -7,6 +7,9 @@ public class BristleWorm : Worm
     [Header("Bristle Worm")]
     public float nutrientAbsorbRate = 0.1f;
 
+    public CreatureDefinition nutrientsPrefab;
+    public int nutrientCount = 1;
+
 
     protected override Creature GetNearestPrey()
     {
@@ -50,8 +53,16 @@ public class BristleWorm : Worm
             return;
         }
 
+        Vector2 preyPos = prey.transform.position;
+
         float nutrGained = prey.AbsorbNutrients(nutrientAbsorbRate*Time.deltaTime);
         foodLevel = Mathf.Clamp01(foodLevel + nutrGained);
+
+        if (prey == null || prey.NutrientsCur <= 0)
+        {
+            GameManager.Instance.SpawnCreature(nutrientsPrefab, preyPos, nutrientCount);
+            OnPreyLost();
+        }
     }
 
     protected override void OnPreyLost()

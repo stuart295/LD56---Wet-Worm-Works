@@ -24,8 +24,10 @@ public abstract class Creature : MonoBehaviour
 
     protected virtual bool LeavesCorpseOnDeath => true;
     protected float MaxLifespanSecs => def.maxLifespanSeconds - lifespanPenaltySecs;
+    protected virtual bool FixVelocity => def.fixVelocity && !Dead;
 
     public bool Dead { get => dead; }
+    public float NutrientsCur { get => nutrientsCur;  }
 
     public virtual void Reproduce()
     {
@@ -70,10 +72,10 @@ public abstract class Creature : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-
         if (dead) return;
-        rb.velocity = Vector2.zero;
+
+        if (FixVelocity)
+            rb.velocity = Vector2.zero;
         UpdateAI();
     }
 
