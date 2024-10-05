@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53b66ac7ae1f65e498c266591dd86b21, type: 3}
-  m_Name: Flatworm
+  m_Name: RagWorm
   m_EditorClassIdentifier: 
-  creatureName: Flatworm
+  creatureName: Rag Worm
   description: TODO
   moveSpeed: 10
   turnSpeed: 200
