@@ -127,8 +127,9 @@ public class Worm : Creature
     private void UpdateFacing(Vector2 position)
     {
         Vector2 lookDir = (position - rb.position).normalized;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        rb.rotation = Mathf.MoveTowards(rb.rotation, angle, Time.deltaTime * def.turnSpeed);
+        float targetAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        float angleDiff = Mathf.DeltaAngle(rb.rotation, targetAngle);
+        rb.rotation = Mathf.MoveTowards(rb.rotation, rb.rotation + angleDiff, Time.deltaTime * def.turnSpeed);
     }
 
     public override float Kill(bool leaveCorpse)

@@ -746,14 +746,19 @@ MonoBehaviour:
     count: 1
   - spawnPoint: {fileID: 822653236}
     definition: {fileID: 11400000, guid: 61cd850ac17f7c846bcbe31a8bee364d, type: 2}
-    count: 1
+    count: 4
   - spawnPoint: {fileID: 2131245588}
     definition: {fileID: 11400000, guid: dfc12de34d7289b49964f869d5bdd4e2, type: 2}
+    count: 10
+  - spawnPoint: {fileID: 1059716999}
+    definition: {fileID: 11400000, guid: 622fddedd69df7040bd9c4bb076f6fb7, type: 2}
     count: 5
+  - spawnPoint: {fileID: 1319881062}
+    definition: {fileID: 11400000, guid: f8dead36a7ff6f9449c1dd205f7cd98d, type: 2}
+    count: 1
   wanderBoundsUpper: {fileID: 996566076}
   wanderBoundsLower: {fileID: 713030489}
   sulphurVents:
-  - {fileID: 6182539931247490966}
   - {fileID: 545928723}
 --- !u!1 &527733382
 GameObject:
@@ -937,6 +942,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SulphurVent (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9056121058450419125, guid: e2978e682094b7c41ad8e8cad2f498d8, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1077,6 +1086,8 @@ Transform:
   - {fileID: 1246909259}
   - {fileID: 822653236}
   - {fileID: 2131245588}
+  - {fileID: 1059716999}
+  - {fileID: 1319881062}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &665682731
@@ -1260,10 +1271,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 64.87816, y: 5.5153694}
+    - - {x: 63.896767, y: 9.659004}
       - {x: 64.801994, y: 28.442373}
       - {x: -71.09408, y: 28.722513}
-      - {x: -70.885925, y: 5.8236465}
+      - {x: -71.10401, y: 10.730583}
   m_UseDelaunayMesh: 0
 --- !u!1 &822653235
 GameObject:
@@ -1698,6 +1709,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3919a337d3c86e42b12001346bbd71c, type: 3}
+--- !u!1 &1059716998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059716999}
+  m_Layer: 0
+  m_Name: CrystalVores
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059716999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059716998}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -56.4, y: -18.1, z: -0.58597255}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 619620936}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1246909258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,6 +1876,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1319881061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1319881062}
+  m_Layer: 0
+  m_Name: Vorathians
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1319881062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319881061}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 48.1, y: -18.1, z: -0.58597255}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 619620936}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1336388932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2368,22 +2441,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: SulphurVent
       objectReference: {fileID: 0}
+    - target: {fileID: 9056121058450419125, guid: e2978e682094b7c41ad8e8cad2f498d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2978e682094b7c41ad8e8cad2f498d8, type: 3}
---- !u!114 &6182539931247490966 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6150494650015342551, guid: e2978e682094b7c41ad8e8cad2f498d8, type: 3}
-  m_PrefabInstance: {fileID: 6182539931247490965}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d4edec0413d8243a6032fdfd40500a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

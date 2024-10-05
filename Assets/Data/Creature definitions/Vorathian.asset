@@ -10,29 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53b66ac7ae1f65e498c266591dd86b21, type: 3}
-  m_Name: TubeWorm
+  m_Name: Vorathian
   m_EditorClassIdentifier: 
-  creatureName: Tube Worm
+  creatureName: Vorathian
   description: TODO
-  moveSpeed: 7
+  moveSpeed: 15
   turnSpeed: 200
   wanderDist: 30
   wanderDelayMin: 3
   wanderDelayMax: 6
   livesAtSurface: 0
   fixVelocity: 1
-  prefab: {fileID: 5313118508782271607, guid: 901cda0ef7b337c438f3dcebb8dc2ac8, type: 3}
-  maxCreatures: 25
-  nutrientLossRate: 0.015
-  searchFoodThreshold: 0.75
+  prefab: {fileID: 5313118508782271607, guid: facfcff866be38e419db2c62bb9a88d8, type: 3}
+  maxCreatures: 50
+  nutrientLossRate: 7.5
+  searchFoodThreshold: 500
   speciesToEat:
-  - {fileID: 11400000, guid: dfc12de34d7289b49964f869d5bdd4e2, type: 2}
-  startNutrients: 0.75
-  maxNutrients: 1
-  nutrientDeathMultiplier: 0.5
+  - {fileID: 11400000, guid: 622fddedd69df7040bd9c4bb076f6fb7, type: 2}
+  startNutrients: 500
+  maxNutrients: 1000
+  nutrientDeathMultiplier: 1
   eatsCorpses: 0
   reproductionIntervalNorm: 0.4
   reproductionIntervalNoise: 0.05
   offspringCount: 1
   offspringSpawnOffsetDist: 2
-  maxLifespanSeconds: 210
+  maxLifespanSeconds: 7200

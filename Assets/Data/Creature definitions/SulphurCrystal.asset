@@ -27,7 +27,7 @@ MonoBehaviour:
   searchFoodThreshold: 0.5
   speciesToEat: []
   startNutrients: 250
-  maxNutrients: 1
+  maxNutrients: 250
   nutrientDeathMultiplier: 1
   eatsCorpses: 0
   reproductionIntervalNorm: 2
