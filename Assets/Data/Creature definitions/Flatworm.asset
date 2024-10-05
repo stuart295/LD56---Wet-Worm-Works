@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b66ac7ae1f65e498c266591dd86b21, type: 3}
+  m_Name: Flatworm
+  m_EditorClassIdentifier: 
+  creatureName: Flatworm
+  description: TODO
+  moveSpeed: 10
+  turnSpeed: 200
+  wanderDist: 30
+  wanderDelayMin: 3
+  wanderDelayMax: 6
+  prefab: {fileID: 5313118508782271607, guid: c74146ff39ddbd94aaac439261888076, type: 3}
+  maxCreatures: 20
+  hungerRate: 0.05
+  searchFoodThreshold: 0.5
+  speciesToEat:
+  - {fileID: 11400000, guid: a7dc7db9b833a5e4ca73c447737c4f70, type: 2}
+  nutrition: 1
+  reproductionIntervalNorm: 0.4
+  reproductionIntervalNoise: 0.05
+  offspringCount: 1
+  offspringSpawnOffsetDist: 2
+  maxLifespanSeconds: 60

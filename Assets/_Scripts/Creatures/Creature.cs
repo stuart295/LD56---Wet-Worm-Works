@@ -15,8 +15,9 @@ public abstract class Creature : MonoBehaviour
 
 
     private float nextReproductionTime = 0f;
-    
-
+    protected Rigidbody2D rb;
+    protected bool dead = false;
+    protected Creature prey;
 
     public virtual void Reproduce()
     {
@@ -30,6 +31,7 @@ public abstract class Creature : MonoBehaviour
     protected virtual void Awake()
     {
         SetNextReproductionTime();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void SetNextReproductionTime()
@@ -43,12 +45,23 @@ public abstract class Creature : MonoBehaviour
         UpdateLifespan();
     }
 
+    private void FixedUpdate()
+    {
+        rb.velocity = Vector2.zero;
+        UpdateAI();
+    }
+
+    protected virtual void UpdateAI()
+    {
+        //Implement in children, if they think...
+    }
+
     private void UpdateLifespan()
     {
         lifespanCur += Time.deltaTime;
         if (lifespanCur >= def.maxLifespanSeconds)
         {
-            Kill();
+            Kill(leaveCorpse: true);
         }else if (lifespanCur >= nextReproductionTime)
         {
             Reproduce();
@@ -62,13 +75,49 @@ public abstract class Creature : MonoBehaviour
         foodLevel  = Mathf.Clamp01(foodLevel -= def.hungerRate*Time.deltaTime);
         if (foodLevel <= 0)
         {
-            Kill();
+            Kill(leaveCorpse: true);
         }
     }
 
-    public void Kill()
+    public void Kill(bool leaveCorpse)
     {
-        GameManager.Instance.OnCreatureDeath(def);
-        Destroy(gameObject);
+        dead = true;
+
+        if (leaveCorpse)
+        {
+            //TODO
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        GameManager.Instance.OnCreatureDeath(this, leaveCorpse);
+        
+    }
+
+    protected Creature GetNearestPrey()
+    {
+        if (def.speciesToEat == null || def.speciesToEat.Count == 0) return null;
+
+        foreach (CreatureDefinition preyDef in def.speciesToEat)
+        {
+            Creature prey = GameManager.Instance.GetNearestCreature(preyDef, transform.position);
+            if (prey != null) return prey;
+        }
+
+        return null;
+    }
+
+    protected bool Eat(Creature creature)
+    {
+        if (creature == null) return false;
+        if (creature.dead) return false;
+
+        foodLevel = creature.def.nutrition ;
+        creature.Kill(leaveCorpse: false);
+
+
+        return true;
     }
 }

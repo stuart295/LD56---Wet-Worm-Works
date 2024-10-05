@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -14,9 +15,14 @@ public class GameManager : MonoBehaviour
     [Header("Spawn points")]
     public List<Transform> algaeSpawns;
 
+    public Collider2D bounds;
+
     public static GameManager Instance { get => instance; }
 
     private Dictionary<CreatureDefinition, int> creatureCounts = new Dictionary<CreatureDefinition, int>();
+    private Dictionary<CreatureDefinition, HashSet<Creature>> creatureMap = new Dictionary<CreatureDefinition, HashSet<Creature>>();
+
+    private HashSet<Creature> corpses =  new HashSet<Creature>();
 
     private void Awake()
     {
@@ -51,23 +57,51 @@ public class GameManager : MonoBehaviour
 
             Creature creature = Instantiate(definition.prefab, pos, Quaternion.identity).GetComponent<Creature>();
 
-            if (creatureCounts.ContainsKey(definition))
-            {
-                creatureCounts[definition] += 1;
+            creatureCounts[definition] = creatureCounts.ContainsKey(definition) ? creatureCounts[definition] + 1 : 1;
+
+            if (creatureMap.ContainsKey(definition)) {
+                creatureMap[definition].Add(creature);
             }
             else
             {
-                creatureCounts.Add(definition, 1);
+                creatureMap[definition] = new HashSet<Creature> { creature };
             }
         }
 
     }
 
-    public void OnCreatureDeath(CreatureDefinition creatureDef)
+    public void OnCreatureDeath(Creature creature, bool corpseLeft)
     {
-        if (creatureCounts.ContainsKey(creatureDef))
+        if (creatureCounts.ContainsKey(creature.def))
         {
-            creatureCounts[creatureDef] -= 1;
+            creatureCounts[creature.def] -= 1;
         }
+
+        if (creatureMap.ContainsKey(creature.def))
+        {
+            if (corpseLeft)
+            {
+                corpses.Add(creature);
+            }
+
+            creatureMap[creature.def].Remove(creature);
+        }
+
+
+    }
+
+    //Brute force fun
+    public Creature GetNearestCreature(CreatureDefinition targetDefinition, Vector3 position)
+    {
+        HashSet<Creature> creatures = creatureMap.GetValueOrDefault(targetDefinition, new HashSet<Creature>());
+        return creatures.OrderBy(c => Vector3.Distance(c.transform.position, position)).FirstOrDefault();
+    }
+
+    public Vector2 ConstrainToBounds(Vector2 position)
+    {
+        Bounds bounds = this.bounds.bounds;
+        float clampedX = Mathf.Clamp(position.x, bounds.min.x, bounds.max.x);
+        float clampedY = Mathf.Clamp(position.y, bounds.min.y, bounds.max.y);
+        return new Vector2(clampedX, clampedY);
     }
 }
