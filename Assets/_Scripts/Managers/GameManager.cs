@@ -12,15 +12,12 @@ public class GameManager : MonoBehaviour
     [Header("Settings")]
     public float corpseDecayTimeSecs = 30f;
 
-    [Header("Creatures")]
-    public CreatureDefinition algaeDef;
-
 
     [Header("Spawns")]
-    public List<Transform> algaeSpawns;
-    public int algaeStartCount = 10;
+    public List<CreatureSpawn> creatureSpawns;
 
-    public Collider2D bounds;
+    public Collider2D wanderBoundsUpper;
+    public Collider2D wanderBoundsLower;
 
     public static GameManager Instance { get => instance; }
 
@@ -47,12 +44,13 @@ public class GameManager : MonoBehaviour
 
     private void SpawnThings()
     {
-        foreach (Transform spawnPoint in algaeSpawns)
+        //Algae
+        foreach (CreatureSpawn creatureSpawn in creatureSpawns)
         {
-            for (int i = 0; i < algaeStartCount; i++)
+            for (int i = 0; i < creatureSpawn.count; i++)
             {
                 Vector3 offset = new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
-                SpawnCreature(algaeDef, spawnPoint.position + offset, 1);
+                SpawnCreature(creatureSpawn.definition, creatureSpawn.spawnPoint.position + offset, 1);
             }
             
         }
@@ -107,9 +105,9 @@ public class GameManager : MonoBehaviour
         return creatures.OrderBy(c => Vector3.Distance(c.transform.position, position)).FirstOrDefault();
     }
 
-    public Vector2 ConstrainToBounds(Vector2 position)
+    public Vector2 ConstrainToBounds(Vector2 position, bool upper)
     {
-        Bounds bounds = this.bounds.bounds;
+        Bounds bounds = upper ? wanderBoundsUpper.bounds : wanderBoundsLower.bounds;
         float clampedX = Mathf.Clamp(position.x, bounds.min.x, bounds.max.x);
         float clampedY = Mathf.Clamp(position.y, bounds.min.y, bounds.max.y);
         return new Vector2(clampedX, clampedY);
@@ -120,5 +118,13 @@ public class GameManager : MonoBehaviour
         if (!corpses.Contains(creature)) return;
 
         corpses.Remove(creature);
+    }
+
+    [Serializable]
+    public class CreatureSpawn
+    {
+        public Transform spawnPoint;
+        public CreatureDefinition definition;
+        public int count = 1;
     }
 }

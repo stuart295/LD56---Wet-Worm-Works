@@ -12,6 +12,7 @@ public abstract class Creature : MonoBehaviour
     [Header("Live stats")]
     public float foodLevel = 0.5f;
     public float lifespanCur = 0f;
+    public float lifespanPenaltySecs = 0f;
 
 
     private float nextReproductionTime = 0f;
@@ -21,6 +22,9 @@ public abstract class Creature : MonoBehaviour
     protected float deathTime = 0f;
 
     protected virtual bool LeavesCorpseOnDeath => true;
+    protected float MaxLifespanSecs => def.maxLifespanSeconds - lifespanPenaltySecs;
+
+    public bool Dead { get => dead; }
 
     public virtual void Reproduce()
     {
@@ -79,7 +83,7 @@ public abstract class Creature : MonoBehaviour
     private void UpdateLifespan()
     {
         lifespanCur += Time.deltaTime;
-        if (lifespanCur >= def.maxLifespanSeconds)
+        if (lifespanCur >= MaxLifespanSecs)
         {
             Kill(leaveCorpse: LeavesCorpseOnDeath);
         }else if (lifespanCur >= nextReproductionTime)

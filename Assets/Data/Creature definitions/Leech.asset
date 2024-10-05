@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53b66ac7ae1f65e498c266591dd86b21, type: 3}
-  m_Name: Algae
+  m_Name: Leech
   m_EditorClassIdentifier: 
-  creatureName: Algae
+  creatureName: Leech
   description: TODO
-  moveSpeed: 3
-  turnSpeed: 10
-  wanderDist: 10
+  moveSpeed: 15
+  turnSpeed: 200
+  wanderDist: 30
   wanderDelayMin: 3
   wanderDelayMax: 6
   livesAtSurface: 1
-  prefab: {fileID: 534986181200833154, guid: 7d3f38b0634b6b245a0b61862ddf63cf, type: 3}
-  maxCreatures: 60
-  hungerRate: 0.1
-  searchFoodThreshold: 0.5
-  speciesToEat: []
+  prefab: {fileID: 5313118508782271607, guid: b3919a337d3c86e42b12001346bbd71c, type: 3}
+  maxCreatures: 50
+  hungerRate: 0.05
+  searchFoodThreshold: 0.8
+  speciesToEat:
+  - {fileID: 11400000, guid: 18381ec5c517a894babf401bad83cc7a, type: 2}
   nutrition: 1
-  reproductionIntervalNorm: 0.4
+  reproductionIntervalNorm: 0.8
   reproductionIntervalNoise: 0.05
   offspringCount: 1
-  offspringSpawnOffsetDist: 1
-  maxLifespanSeconds: 15
+  offspringSpawnOffsetDist: 2
+  maxLifespanSeconds: 30

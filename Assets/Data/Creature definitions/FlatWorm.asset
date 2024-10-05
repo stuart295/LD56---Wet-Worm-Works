@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53b66ac7ae1f65e498c266591dd86b21, type: 3}
-  m_Name: Algae
+  m_Name: FlatWorm
   m_EditorClassIdentifier: 
-  creatureName: Algae
+  creatureName: Flat Worm
   description: TODO
-  moveSpeed: 3
-  turnSpeed: 10
-  wanderDist: 10
+  moveSpeed: 15
+  turnSpeed: 200
+  wanderDist: 30
   wanderDelayMin: 3
   wanderDelayMax: 6
   livesAtSurface: 1
-  prefab: {fileID: 534986181200833154, guid: 7d3f38b0634b6b245a0b61862ddf63cf, type: 3}
-  maxCreatures: 60
-  hungerRate: 0.1
-  searchFoodThreshold: 0.5
-  speciesToEat: []
+  prefab: {fileID: 5313118508782271607, guid: 0cb148418b7a743418aeac2d7e3878ba, type: 3}
+  maxCreatures: 50
+  hungerRate: 0.05
+  searchFoodThreshold: 0.75
+  speciesToEat:
+  - {fileID: 11400000, guid: 5463a901e56b1144eb5331ca6ef0a133, type: 2}
   nutrition: 1
   reproductionIntervalNorm: 0.4
   reproductionIntervalNoise: 0.05
   offspringCount: 1
-  offspringSpawnOffsetDist: 1
-  maxLifespanSeconds: 15
+  offspringSpawnOffsetDist: 2
+  maxLifespanSeconds: 120

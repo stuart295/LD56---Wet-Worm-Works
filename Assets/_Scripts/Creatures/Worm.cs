@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -38,6 +39,12 @@ public class Worm : Creature
         base.UpdateAI();
         anims.SetFloat(ANIM_SPEED, 0f);
 
+        if (prey != null && prey.Dead)
+        {
+            OnPreyDead();
+
+        }
+
         if (prey == null && foodLevel <= def.searchFoodThreshold)
         {
             //Getting hungry, search for food
@@ -47,22 +54,14 @@ public class Worm : Creature
         //Hunt prey
         if (prey != null)
         {
-            //Move to food
-            if (MoveTo(prey.transform.position))
-            {
-                //If there, eat!
-                Eat(prey);
-                prey = null;
-                ResetWanderTime();
-
-            }
+            HuntPrey();
         }
         else if ((Time.time - lastWanderTime) >= wanderDelay)
         {
             if (wanderTarget == Vector2.zero)
             {
                 wanderTarget = rb.position + new Vector2(Random.Range(-def.wanderDist, def.wanderDist), Random.Range(-def.wanderDist, def.wanderDist));
-                wanderTarget = GameManager.Instance.ConstrainToBounds(wanderTarget);
+                wanderTarget = GameManager.Instance.ConstrainToBounds(wanderTarget, def.livesAtSurface);
             }
 
             if (MoveTo(wanderTarget))
@@ -72,6 +71,31 @@ public class Worm : Creature
             }
         }
 
+    }
+
+    protected virtual void HuntPrey()
+    {
+        if (prey == null) return;
+
+        //Move to food
+        if (MoveTo(prey.transform.position))
+        {
+            //If there, eat!
+            OnReachedPrey();
+
+        }
+    }
+
+    protected virtual void OnPreyDead()
+    {
+        prey = null;
+    }
+
+    protected virtual void OnReachedPrey()
+    {
+        Eat(prey);
+        prey = null;
+        ResetWanderTime();
     }
 
     private void ResetWanderTime()
@@ -90,9 +114,7 @@ public class Worm : Creature
             if (def.speciesToEat.Contains(otherCreature.def))
             {
                 //Eat!
-                Eat(prey);
-                prey = null;
-                ResetWanderTime();
+                OnReachedPrey();
             }
  
         }
@@ -111,4 +133,19 @@ public class Worm : Creature
 
         anims.SetTrigger(ANIM_KILL);
     }
+
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        if (!Selection.Contains(gameObject)) return;
+
+
+        if (wanderTarget != Vector2.zero)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(wanderTarget, 0.25f);
+        }
+    }
+#endif
 }

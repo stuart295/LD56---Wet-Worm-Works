@@ -136,11 +136,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5209661472213733004}
-  - component: {fileID: 6706466954911732088}
+  - component: {fileID: 7255085368681712380}
   - component: {fileID: 5577725935374051463}
   - component: {fileID: 6480962379055706506}
-  m_Layer: 8
-  m_Name: Ragworm
+  - component: {fileID: 5959763667145772722}
+  m_Layer: 10
+  m_Name: Leech
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,13 +157,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20.04, y: 23.02, z: -0.39227873}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6463068384192206636}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6706466954911732088
+--- !u!114 &7255085368681712380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,13 +172,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5313118508782271607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2f4dd7c35151245b3ce353025aa00b, type: 3}
+  m_Script: {fileID: 11500000, guid: dbeba05209e64e94ca93f08b4c508519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  def: {fileID: 11400000, guid: 5463a901e56b1144eb5331ca6ef0a133, type: 2}
+  def: {fileID: 11400000, guid: 567eb6c717e276b498cb910c0ade57e7, type: 2}
   foodLevel: 1
   lifespanCur: 0
+  lifespanPenaltySecs: 0
   anims: {fileID: 2089883020971362803}
+  lifetimeDrainPerSec: 1
+  attachedJoint: {fileID: 5959763667145772722}
 --- !u!50 &5577725935374051463
 Rigidbody2D:
   serializedVersion: 4
@@ -190,7 +194,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -250,6 +254,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.355137, y: 0.76675606}
   m_EdgeRadius: 0
+--- !u!231 &5959763667145772722
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5313118508782271607}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 2.32, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.5
+  m_DampingRatio: 0
+  m_Frequency: 0
 --- !u!1 &7706677879361134479
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,9 +350,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8d92b3e9e59e4b64cba56f9096c881b5, type: 3}
-  m_Color: {r: 1, g: 0.88450736, b: 0.3915094, a: 1}
+  m_Color: {r: 0.1981132, g: 0.040711474, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
