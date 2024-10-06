@@ -28,6 +28,7 @@ public class BuyInfoUI : MonoBehaviour
         statsString += $"\nOffspring: {Mathf.FloorToInt(1f/def.reproductionIntervalNorm)}";
         statsString += $"\nMax biomass: {def.maxNutrients}";
         statsString += $"\nCorpse biomass multiplier: {def.nutrientDeathMultiplier}";
+        statsString += $"\nPurchase cooldown penalty: {def.buyCooldownSecs}s";
 
         stats.text = statsString;
 
