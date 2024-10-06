@@ -185,7 +185,7 @@ MonoBehaviour:
   anims: {fileID: 2089883020971362803}
   crystalDef: {fileID: 11400000, guid: a8a0e2ce13d460e429c801b0197deba9, type: 2}
   crystalCount: 1
-  nutrientPickupRange: 10
+  nutrientPickupRange: 14
   poopPoint: {fileID: 4520831486004349551}
 --- !u!50 &5577725935374051463
 Rigidbody2D:
