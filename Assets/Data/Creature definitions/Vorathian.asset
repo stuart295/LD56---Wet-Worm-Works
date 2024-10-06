@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Vorathian
   m_EditorClassIdentifier: 
   creatureName: Vorathian
-  description: TODO
-  icon: {fileID: 0}
+  description: 'A massive, long-lived, deep-sea predator that preys upon Crystalvores. '
+  icon: {fileID: 21300000, guid: 952916b43e2c90e44a1e3984b5a5ffa4, type: 3}
   moveSpeed: 15
   turnSpeed: 200
   wanderDist: 30
