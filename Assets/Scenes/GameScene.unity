@@ -1032,6 +1032,9 @@ MonoBehaviour:
   - spawnPoint: {fileID: 1319881062}
     definition: {fileID: 11400000, guid: f8dead36a7ff6f9449c1dd205f7cd98d, type: 2}
     count: 3
+  - spawnPoint: {fileID: 2131245588}
+    definition: {fileID: 11400000, guid: a8a0e2ce13d460e429c801b0197deba9, type: 2}
+    count: 3
   wanderBoundsUpper: {fileID: 996566076}
   wanderBoundsLower: {fileID: 713030489}
   sulphurVents:
@@ -2397,6 +2400,67 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!1001 &917878223
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 534986181200833154, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_Name
+      value: SulphurCrystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 534986181200833154, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211606259235868000, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -42.368767
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211606259235868000, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -25.217253
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211606259235868000, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211606259235868000, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211606259235868000, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211606259235868000, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211606259235868000, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211606259235868000, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211606259235868000, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211606259235868000, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0370915c2166da34eab4d186e8e51d97, type: 3}
 --- !u!1 &940720115
 GameObject:
   m_ObjectHideFlags: 0
@@ -5977,3 +6041,4 @@ SceneRoots:
   - {fileID: 316472136}
   - {fileID: 1539187436}
   - {fileID: 1564479773}
+  - {fileID: 917878223}
