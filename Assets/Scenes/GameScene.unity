@@ -2387,6 +2387,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 885532559}
   cameraMoveSpeed: 1
+--- !u!1001 &985342818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5209661472213733004, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209661472213733004, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -21.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209661472213733004, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.39227873
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209661472213733004, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209661472213733004, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209661472213733004, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209661472213733004, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209661472213733004, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209661472213733004, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209661472213733004, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313118508782271607, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_Name
+      value: BristleWorm
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313118508782271607, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
 --- !u!1 &991953428
 GameObject:
   m_ObjectHideFlags: 0
@@ -5729,3 +5790,4 @@ SceneRoots:
   - {fileID: 1896426642}
   - {fileID: 2122648912}
   - {fileID: 162165065}
+  - {fileID: 985342818}

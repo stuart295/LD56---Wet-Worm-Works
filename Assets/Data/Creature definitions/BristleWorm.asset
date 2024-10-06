@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: BristleWorm
   m_EditorClassIdentifier: 
   creatureName: Bristle Worm
-  description: TODO
+  description: A scavenger that feeds on corpses that fall to the ocean floor. Excretes
+    excess biomass as biomass-rich nutrient pellets.
+  icon: {fileID: 21300000, guid: 342dd89d1177d1745bdc6ac8c47d65a1, type: 3}
   moveSpeed: 10
   turnSpeed: 200
   wanderDist: 30
@@ -23,6 +25,7 @@ MonoBehaviour:
   fixVelocity: 1
   prefab: {fileID: 5313118508782271607, guid: 52c175a0b1acdf54e8125e261f073344, type: 3}
   maxCreatures: 50
+  buyCooldownSecs: 10
   nutrientLossRate: 0.025
   searchFoodThreshold: 100
   speciesToEat:
