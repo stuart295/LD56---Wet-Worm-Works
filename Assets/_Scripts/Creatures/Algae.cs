@@ -9,6 +9,13 @@ public class Algae : Creature
 
     protected override bool LeavesCorpseOnDeath => false;
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        rb.MoveRotation(Random.Range(0, 360));
+    }
+
     protected override void UpdateNutrientLevels()
     {
         //Food never decreases 
