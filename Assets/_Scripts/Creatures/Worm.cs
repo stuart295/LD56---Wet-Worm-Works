@@ -75,11 +75,25 @@ public class Worm : Creature
             }
         }
 
+
+    }
+
+    private bool IsWrongDepth(Vector2 pos)
+    {
+        bool tooDeep = def.livesAtSurface && pos.y <= GameManager.Instance.boundaryHeight;
+        bool tooShallow = !def.livesAtSurface && pos.y >= GameManager.Instance.boundaryHeight;
+        return tooDeep || tooShallow;
     }
 
     protected virtual void HuntPrey()
     {
         if (prey == null) return;
+        if (IsWrongDepth(prey.transform.position))
+        {
+            OnPreyLost();
+            return;
+
+        }
 
         //Move to food
         if (MoveTo(prey.transform.position))

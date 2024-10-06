@@ -801,7 +801,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61cd850ac17f7c846bcbe31a8bee364d, type: 2}
   - {fileID: 11400000, guid: 622fddedd69df7040bd9c4bb076f6fb7, type: 2}
   - {fileID: 11400000, guid: f8dead36a7ff6f9449c1dd205f7cd98d, type: 2}
-  targetScore: 5000
+  targetScore: 7500
   creatureSpawns:
   - spawnPoint: {fileID: 1749080179}
     definition: {fileID: 11400000, guid: a7dc7db9b833a5e4ca73c447737c4f70, type: 2}
@@ -826,7 +826,7 @@ MonoBehaviour:
     count: 0
   - spawnPoint: {fileID: 2131245588}
     definition: {fileID: 11400000, guid: dfc12de34d7289b49964f869d5bdd4e2, type: 2}
-    count: 0
+    count: 5
   - spawnPoint: {fileID: 1059716999}
     definition: {fileID: 11400000, guid: 622fddedd69df7040bd9c4bb076f6fb7, type: 2}
     count: 0
@@ -1205,7 +1205,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4069575326967267767, guid: e2978e682094b7c41ad8e8cad2f498d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -46.695126
+      value: -16.4
       objectReference: {fileID: 0}
     - target: {fileID: 4069575326967267767, guid: e2978e682094b7c41ad8e8cad2f498d8, type: 3}
       propertyPath: m_LocalPosition.y

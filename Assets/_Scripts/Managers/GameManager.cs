@@ -225,9 +225,9 @@ public class GameManager : MonoBehaviour
         corpses.Remove(creature);
     }
 
-    public Creature GetNearestCorpose(Vector3 position)
+    public Creature GetNearestCorpose(Vector3 position, bool deepOnly)
     {
-        return corpses.OrderBy(c => Vector3.Distance(c.transform.position, position)).FirstOrDefault();
+        return corpses.Where(c => deepOnly ? c.transform.position.y < boundaryHeight : true).OrderBy(c => Vector3.Distance(c.transform.position, position)).FirstOrDefault();
     }
 
     public SulphurVent GetRandomVent()

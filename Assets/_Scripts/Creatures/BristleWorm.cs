@@ -15,7 +15,7 @@ public class BristleWorm : Worm
 
     protected override Creature GetNearestPrey()
     {
-        return GameManager.Instance.GetNearestCorpose(transform.position);
+        return GameManager.Instance.GetNearestCorpose(transform.position, true);
     }
 
     protected override void HuntPrey()

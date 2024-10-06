@@ -30,6 +30,10 @@ public class NutrientPellet : Creature
 
     private void UpdateDrift()
     {
-        rb.AddForce(new Vector2(driftForce, 0));
+        GameObject vent = GameManager.Instance.sulphurVents[0].gameObject;
+
+        float sign = vent.transform.position.x < transform.position.x ? 1 : -1;
+
+        rb.AddForce(new Vector2(sign*driftForce, 0));
     }
 }
