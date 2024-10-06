@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     public Transform wormBar;
     public GameObject wormBtnPrefab;
+    public TMP_Text scoreText;
 
     public static GameManager Instance { get => instance; }
 
@@ -53,6 +55,19 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         UpdateBuyCooldown();
+        UpdateScore();
+    }
+
+    private void UpdateScore()
+    {
+        float score = CalcScore();
+        score = Mathf.RoundToInt(score);
+        scoreText.text = $"Biomass: {score}";
+    }
+
+    private float CalcScore()
+    {
+        return creatureMap.Values.ToList().Sum(c => c.Sum(x => x.Nutrients));
     }
 
     private void UpdateBuyCooldown()
