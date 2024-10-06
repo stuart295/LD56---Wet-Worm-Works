@@ -52,7 +52,8 @@ MonoBehaviour:
   lifespanCur: 0
   lifespanPenaltySecs: 0
   corpseNutrients: 0
-  correctiveForce: 100
+  correctiveForceVertical: 100
+  correctiveForceCenter: 1
 --- !u!212 &8669203474353902340
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -5,7 +5,8 @@ using UnityEngine;
 public class Algae : Creature
 {
 
-    public float correctiveForce = 5f;
+    public float correctiveForceVertical = 5f;
+    public float correctiveForceCenter = 1f;
 
     protected override bool LeavesCorpseOnDeath => false;
 
@@ -29,9 +30,12 @@ public class Algae : Creature
 
         if (pos.y <= GameManager.Instance.boundaryHeight)
         {
-            Vector2 force = Vector2.up * correctiveForce;
+            Vector2 force = Vector2.up * correctiveForceVertical;
             rb.AddForce(force);
         }
+
+        Vector2 centerDir = GameManager.Instance.wanderBoundsUpper.bounds.center - transform.position;
+        rb.AddForce(centerDir.normalized * correctiveForceCenter);
 
     }
 }
