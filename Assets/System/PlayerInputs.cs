@@ -35,6 +35,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb2d4ccc-7674-4883-bbcf-aced381d706c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -147,6 +156,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""MoveCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad981f7f-04fa-435e-b6c0-e9fa7e7bb67c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -156,6 +176,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         // GameInputs
         m_GameInputs = asset.FindActionMap("GameInputs", throwIfNotFound: true);
         m_GameInputs_MoveCamera = m_GameInputs.FindAction("MoveCamera", throwIfNotFound: true);
+        m_GameInputs_Exit = m_GameInputs.FindAction("Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -218,11 +239,13 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GameInputs;
     private List<IGameInputsActions> m_GameInputsActionsCallbackInterfaces = new List<IGameInputsActions>();
     private readonly InputAction m_GameInputs_MoveCamera;
+    private readonly InputAction m_GameInputs_Exit;
     public struct GameInputsActions
     {
         private @PlayerInputs m_Wrapper;
         public GameInputsActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveCamera => m_Wrapper.m_GameInputs_MoveCamera;
+        public InputAction @Exit => m_Wrapper.m_GameInputs_Exit;
         public InputActionMap Get() { return m_Wrapper.m_GameInputs; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -235,6 +258,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @MoveCamera.started += instance.OnMoveCamera;
             @MoveCamera.performed += instance.OnMoveCamera;
             @MoveCamera.canceled += instance.OnMoveCamera;
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
         }
 
         private void UnregisterCallbacks(IGameInputsActions instance)
@@ -242,6 +268,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @MoveCamera.started -= instance.OnMoveCamera;
             @MoveCamera.performed -= instance.OnMoveCamera;
             @MoveCamera.canceled -= instance.OnMoveCamera;
+            @Exit.started -= instance.OnExit;
+            @Exit.performed -= instance.OnExit;
+            @Exit.canceled -= instance.OnExit;
         }
 
         public void RemoveCallbacks(IGameInputsActions instance)
@@ -262,5 +291,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     public interface IGameInputsActions
     {
         void OnMoveCamera(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
     }
 }

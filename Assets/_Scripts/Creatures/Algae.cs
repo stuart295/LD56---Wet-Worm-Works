@@ -12,6 +12,10 @@ public class Algae : Creature
         //Food never decreases 
     }
 
+    protected override void Awake()
+    {
+        base.Awake();
 
-
+        lifespanCur = Random.Range(0, 0.1f);
+    }
 }

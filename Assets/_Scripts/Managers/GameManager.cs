@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [Header("Settings")]
     public float corpseDecayTimeSecs = 30f;
     public List<CreatureDefinition> addableCreatures;
+    public float targetScore = 5000;
    
 
     [Header("Spawns")]
@@ -28,8 +29,17 @@ public class GameManager : MonoBehaviour
     public Transform wormBar;
     public GameObject wormBtnPrefab;
     public TMP_Text scoreText;
+    public GameObject victoryUI;
+
+    [Header("Current")]
+    public float currentNoiseScale = 1.0f;
+    public float currentForceMag = 1.0f;
+    public float currentPosScale = 0.2f;
+    public Vector2 currentNoiseOffset = Vector2.zero;
+
 
     public static GameManager Instance { get => instance; }
+
 
     private Dictionary<CreatureDefinition, int> creatureCounts = new Dictionary<CreatureDefinition, int>();
     private Dictionary<CreatureDefinition, HashSet<Creature>> creatureMap = new Dictionary<CreatureDefinition, HashSet<Creature>>();
@@ -38,6 +48,7 @@ public class GameManager : MonoBehaviour
     private List<AddWormButton> wormButtons;
     private float buyCooldown = 0f;
     private float buyCooldownMax = 1f;
+
 
     private void Awake()
     {
@@ -58,11 +69,23 @@ public class GameManager : MonoBehaviour
         UpdateScore();
     }
 
+    
+
     private void UpdateScore()
     {
         float score = CalcScore();
         score = Mathf.RoundToInt(score);
-        scoreText.text = $"Biomass: {score}";
+        scoreText.text = $"Biomass\n{score} / {targetScore}";
+
+        if (score >= targetScore)
+        {
+            Victory();
+        }
+    }
+
+    private void Victory()
+    {
+        victoryUI.SetActive(true);
     }
 
     private float CalcScore()
@@ -111,12 +134,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        InputManager.Instance.Input.GameInputs.Exit.performed += OnExitPressed;
         SpawnThings();
+    }
+
+    private void OnExitPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        Application.Quit();
     }
 
     private void SpawnThings()
     {
-        //Algae
         foreach (CreatureSpawn creatureSpawn in creatureSpawns)
         {
             for (int i = 0; i < creatureSpawn.count; i++)

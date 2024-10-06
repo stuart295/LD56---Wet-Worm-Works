@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,6 +15,7 @@ public abstract class Creature : MonoBehaviour
     public float lifespanCur = 0f;
     public float lifespanPenaltySecs = 0f;
     public float corpseNutrients = 0f;
+
 
 
     private float nextReproductionTime = 0f;
@@ -57,6 +59,8 @@ public abstract class Creature : MonoBehaviour
 
     public virtual void Update()
     {
+        
+
         if (dead)
         {
             UpdateDecay();
@@ -65,6 +69,24 @@ public abstract class Creature : MonoBehaviour
         UpdateNutrientLevels();
         UpdateLifespan();
     }
+
+    private void UpdateWaterNudge()
+    {
+        Vector2 baseOffset = GameManager.Instance.currentNoiseOffset; 
+        float noiseScale = GameManager.Instance.currentNoiseScale; 
+        float posScale = GameManager.Instance.currentPosScale;
+
+        Vector2 pos = rb.position; 
+
+        // Generate Perlin noise with position and time to create wave-like movement
+        float noiseX = Mathf.PerlinNoise((pos.x * posScale) + Time.time * noiseScale + baseOffset.x, pos.y * posScale) * 2 - 1;
+        float noiseY = Mathf.PerlinNoise(pos.x * posScale, (pos.y * posScale) + Time.time * noiseScale + baseOffset.y) * 2 - 1;
+        Vector2 current = new Vector2(noiseX, noiseY);
+
+        Vector2 currentForce = current * GameManager.Instance.currentForceMag;
+        rb.AddForce(currentForce, ForceMode2D.Force);
+    }
+
 
     protected virtual void UpdateDecay()
     {
@@ -77,6 +99,7 @@ public abstract class Creature : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        UpdateWaterNudge();
         if (dead) return;
 
         if (FixVelocity)
