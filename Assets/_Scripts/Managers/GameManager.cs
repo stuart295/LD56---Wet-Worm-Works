@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public Transform wormBar;
     public GameObject wormBtnPrefab;
     public TMP_Text scoreText;
+    public TMP_Text timeText;
     public GameObject victoryUI;
     public GameObject mainMenu;
     public BuyInfoUI buyInfo;
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
     private List<AddWormButton> wormButtons;
     private float buyCooldown = 0f;
     private float buyCooldownMax = 1f;
+    private float timer = 0;
 
 
     private void Awake()
@@ -68,12 +70,15 @@ public class GameManager : MonoBehaviour
         SetupWormBar();
         mainMenu.SetActive(false);
         buyInfo.Hide();
+        timer = 0f;
     }
 
     private void Update()
     {
         UpdateBuyCooldown();
         UpdateScore();
+
+        timer += Time.deltaTime;
     }
 
     
@@ -88,6 +93,15 @@ public class GameManager : MonoBehaviour
         {
             Victory();
         }
+        else
+        {
+            int minutes = Mathf.FloorToInt(timer / 60);  
+            int seconds = Mathf.FloorToInt(timer % 60);  
+
+            timeText.text = $"Time: {minutes:00}:{seconds:00}";  
+        }
+
+
     }
 
     private void Victory()

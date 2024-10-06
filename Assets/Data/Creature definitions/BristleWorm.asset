@@ -44,4 +44,4 @@ MonoBehaviour:
   reproductionIntervalNoise: 0.05
   offspringCount: 1
   offspringSpawnOffsetDist: 2
-  maxLifespanSeconds: 90
+  maxLifespanSeconds: 180
