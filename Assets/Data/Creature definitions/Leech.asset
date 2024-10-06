@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Leech
   m_EditorClassIdentifier: 
   creatureName: Leech
-  description: TODO
+  description: 'A parasite that feeds on Flat worms, decreasing their lifespans and
+    number of offspring as a result. '
+  icon: {fileID: 21300000, guid: 7227e7a0ec8e3514ba96d0c7197ec438, type: 3}
   moveSpeed: 20
   turnSpeed: 200
   wanderDist: 30
@@ -23,6 +25,7 @@ MonoBehaviour:
   fixVelocity: 1
   prefab: {fileID: 5313118508782271607, guid: b3919a337d3c86e42b12001346bbd71c, type: 3}
   maxCreatures: 50
+  buyCooldownSecs: 10
   nutrientLossRate: 0.05
   searchFoodThreshold: 0.8
   speciesToEat:
