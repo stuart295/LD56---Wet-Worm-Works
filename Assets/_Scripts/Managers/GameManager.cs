@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
     public GameObject victoryUI;
     public GameObject mainMenu;
+    public BuyInfoUI buyInfo;
 
     [Header("Current")]
     public float currentNoiseScale = 1.0f;
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
         buyCooldownMax = 1f;
         SetupWormBar();
         mainMenu.SetActive(false);
+        buyInfo.Hide();
     }
 
     private void Update()

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8669203474353902340}
   - component: {fileID: 3164284621073722278}
   - component: {fileID: 472671108572764792}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: NutrientPellet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
