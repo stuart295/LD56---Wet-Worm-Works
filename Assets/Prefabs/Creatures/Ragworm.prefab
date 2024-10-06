@@ -175,8 +175,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   def: {fileID: 11400000, guid: 5463a901e56b1144eb5331ca6ef0a133, type: 2}
-  foodLevel: 1
+  nutrientLevel: 0.5
   lifespanCur: 0
+  lifespanPenaltySecs: 0
+  corpseNutrients: 0
+  attachedJoint: {fileID: 0}
   anims: {fileID: 2089883020971362803}
 --- !u!50 &5577725935374051463
 Rigidbody2D:
@@ -326,7 +329,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d92b3e9e59e4b64cba56f9096c881b5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 192b14a0c9c0f54489423b4fa13de1a3, type: 3}
   m_Color: {r: 1, g: 0.88450736, b: 0.3915094, a: 1}
   m_FlipX: 0
   m_FlipY: 0
