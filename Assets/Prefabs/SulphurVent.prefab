@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5746999530054633577}
   - component: {fileID: 9161324755668888832}
   - component: {fileID: 6003704540747133770}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SulphurVent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
