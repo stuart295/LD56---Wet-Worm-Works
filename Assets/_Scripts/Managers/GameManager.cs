@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Settings")]
     public float corpseDecayTimeSecs = 30f;
-
+    public List<CreatureDefinition> addableCreatures;
+   
 
     [Header("Spawns")]
     public List<CreatureSpawn> creatureSpawns;
@@ -22,12 +23,19 @@ public class GameManager : MonoBehaviour
     [Header("Vents")]
     public List<SulphurVent> sulphurVents;
 
+    [Header("UI")]
+    public Transform wormBar;
+    public GameObject wormBtnPrefab;
+
     public static GameManager Instance { get => instance; }
 
     private Dictionary<CreatureDefinition, int> creatureCounts = new Dictionary<CreatureDefinition, int>();
     private Dictionary<CreatureDefinition, HashSet<Creature>> creatureMap = new Dictionary<CreatureDefinition, HashSet<Creature>>();
 
     private HashSet<Creature> corpses =  new HashSet<Creature>();
+    private List<AddWormButton> wormButtons;
+    private float buyCooldown = 0f;
+    private float buyCooldownMax = 1f;
 
     private void Awake()
     {
@@ -38,7 +46,53 @@ public class GameManager : MonoBehaviour
         }
 
         instance = this;
+        buyCooldownMax = 1f;
+        SetupWormBar();
     }
+
+    private void Update()
+    {
+        UpdateBuyCooldown();
+    }
+
+    private void UpdateBuyCooldown()
+    {
+        buyCooldown -= Time.deltaTime;
+        buyCooldown = Mathf.Max(buyCooldown, 0f);
+
+        wormButtons.ForEach(b => b.SetCooldown(buyCooldown/ buyCooldownMax));
+    }
+
+    private void SetupWormBar()
+    {
+        wormButtons = new List<AddWormButton>();
+
+        foreach (CreatureDefinition def in addableCreatures)
+        {
+            AddWormButton btn = Instantiate(wormBtnPrefab, wormBar).GetComponent<AddWormButton>();
+            btn.Setup(def, OnAddWormClicked);
+            wormButtons.Add(btn);
+        }
+    }
+
+    private void OnAddWormClicked(CreatureDefinition definition)
+    {
+        Collider2D area = definition.livesAtSurface ? wanderBoundsUpper : wanderBoundsLower;
+        Vector3 spawnPoint = GetRandomPointInArea(area);//TODO timer
+        SpawnCreature(definition, spawnPoint, 1);
+
+        buyCooldown = definition.buyCooldownSecs;
+        buyCooldownMax = definition.buyCooldownSecs;
+    }
+
+    private Vector3 GetRandomPointInArea(Collider2D area)
+    {
+        Bounds bounds = area.bounds;
+        float randomX = Random.Range(bounds.min.x, bounds.max.x);
+        float randomY = Random.Range(bounds.min.y, bounds.max.y);
+        return new Vector3(randomX, randomY, 0f);
+    }
+
 
     private void Start()
     {

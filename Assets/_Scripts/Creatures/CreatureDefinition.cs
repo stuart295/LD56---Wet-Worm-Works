@@ -11,6 +11,8 @@ public class CreatureDefinition : ScriptableObject
     [TextArea(3, 5)]
     public string description = "";
 
+    public Sprite icon;
+
     [Header("Movement")]
     public float moveSpeed = 3f;
     public float turnSpeed = 10f;
@@ -23,6 +25,7 @@ public class CreatureDefinition : ScriptableObject
     [Header("Spawning")]
     public GameObject prefab;
     public int maxCreatures = 50;
+    public float buyCooldownSecs = 10f;
 
     [Header("Nutrition")]
     public float nutrientLossRate = 0.1f;
