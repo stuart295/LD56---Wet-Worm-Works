@@ -185,8 +185,8 @@ MonoBehaviour:
   nutrientAbsorbRate: 2
   nutrientsPrefab: {fileID: 11400000, guid: dfc12de34d7289b49964f869d5bdd4e2, type: 2}
   nutrientCount: 1
-  nutrientPoopThreshold: 60
-  nutrientPoopUse: 50
+  nutrientPoopThreshold: 25
+  nutrientPoopUse: 15
 --- !u!50 &5577725935374051463
 Rigidbody2D:
   serializedVersion: 4

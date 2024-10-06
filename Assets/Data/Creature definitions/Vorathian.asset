@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creatureName: Vorathian
   description: TODO
+  icon: {fileID: 0}
   moveSpeed: 15
   turnSpeed: 200
   wanderDist: 30
@@ -23,6 +24,7 @@ MonoBehaviour:
   fixVelocity: 1
   prefab: {fileID: 5313118508782271607, guid: facfcff866be38e419db2c62bb9a88d8, type: 3}
   maxCreatures: 50
+  buyCooldownSecs: 25
   nutrientLossRate: 7.5
   searchFoodThreshold: 500
   speciesToEat:

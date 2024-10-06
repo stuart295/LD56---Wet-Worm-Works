@@ -5,6 +5,8 @@ using UnityEngine;
 public class Algae : Creature
 {
 
+    public float correctiveForce = 5f;
+
     protected override bool LeavesCorpseOnDeath => false;
 
     protected override void UpdateNutrientLevels()
@@ -12,10 +14,17 @@ public class Algae : Creature
         //Food never decreases 
     }
 
-    protected override void Awake()
+    protected override void FixedUpdate()
     {
-        base.Awake();
+        base.FixedUpdate();
 
-        lifespanCur = Random.Range(0, 0.1f);
+        Vector2 pos = rb.position;
+
+        if (pos.y <= GameManager.Instance.boundaryHeight)
+        {
+            Vector2 force = Vector2.up * correctiveForce;
+            rb.AddForce(force);
+        }
+
     }
 }

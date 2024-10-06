@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creatureName: Algae
   description: TODO
+  icon: {fileID: 0}
   moveSpeed: 3
   turnSpeed: 10
   wanderDist: 10
@@ -22,9 +23,10 @@ MonoBehaviour:
   livesAtSurface: 1
   fixVelocity: 0
   prefab: {fileID: 534986181200833154, guid: 7d3f38b0634b6b245a0b61862ddf63cf, type: 3}
-  maxCreatures: 60
+  maxCreatures: 100
+  buyCooldownSecs: 10
   nutrientLossRate: 0
-  searchFoodThresholdPercent: 0.5
+  searchFoodThreshold: 0.5
   speciesToEat: []
   startNutrients: 0.5
   maxNutrients: 1

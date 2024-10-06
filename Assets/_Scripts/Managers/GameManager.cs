@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
@@ -30,12 +31,15 @@ public class GameManager : MonoBehaviour
     public GameObject wormBtnPrefab;
     public TMP_Text scoreText;
     public GameObject victoryUI;
+    public GameObject mainMenu;
 
     [Header("Current")]
     public float currentNoiseScale = 1.0f;
     public float currentForceMag = 1.0f;
     public float currentPosScale = 0.2f;
     public Vector2 currentNoiseOffset = Vector2.zero;
+
+    public float boundaryHeight = 0f;
 
 
     public static GameManager Instance { get => instance; }
@@ -61,6 +65,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         buyCooldownMax = 1f;
         SetupWormBar();
+        mainMenu.SetActive(false);
     }
 
     private void Update()
@@ -140,7 +145,7 @@ public class GameManager : MonoBehaviour
 
     private void OnExitPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        Application.Quit();
+        mainMenu.SetActive(!mainMenu.activeSelf);
     }
 
     private void SpawnThings()
@@ -237,4 +242,22 @@ public class GameManager : MonoBehaviour
         public CreatureDefinition definition;
         public int count = 1;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(new Vector3(-1000, boundaryHeight), new Vector3(1000, boundaryHeight));
+    }
+#endif
 }

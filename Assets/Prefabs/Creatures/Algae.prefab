@@ -48,9 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   def: {fileID: 11400000, guid: a7dc7db9b833a5e4ca73c447737c4f70, type: 2}
-  foodLevel: 1
+  nutrientLevel: 0.5
   lifespanCur: 0
   lifespanPenaltySecs: 0
+  corpseNutrients: 0
+  correctiveForce: 100
 --- !u!212 &8669203474353902340
 SpriteRenderer:
   m_ObjectHideFlags: 0
